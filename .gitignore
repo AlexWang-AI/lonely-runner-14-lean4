@@ -1,0 +1,17 @@
+# 环境变量 - 绝不提交
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Lean 构建产物
+MathWorkspace/.lake/
+MathWorkspace/build/
+
+# 运行期状态与日志 (不属研究成果本体)
+shared_blackboard.json
+research/siege_*.log
+research/adversarial_audit_log.md
+research/*.json
