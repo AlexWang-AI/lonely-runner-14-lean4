@@ -3,6 +3,24 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 <!-- Zenodo DOI badge placeholder: replace XXXXXXX after the first Zenodo deposit -->
 
+## 🎉 World's First 0-sorry Lean 4 Formal Verification of the Universal Weak Lonely Runner Bound (∀k ≥ 1, gap ≥ 1/(2(k+1)))
+
+`outputs/proved_weak_lonely_runner_universal.lean` — the **fully machine-verified universal weak bound** for all runner counts:
+
+```lean
+theorem weak_lonely_runner_universal (k : ℕ) (hk : 1 ≤ k)
+    (v : Fin k → ℕ+) (h_inj : Function.Injective v) :
+    ∃ (t : ℝ), ∀ (i : Fin k), torus_dist ((v i : ℝ) * t) ≥ (1 : ℝ) / (2 * ((k : ℝ) + 1))
+```
+
+**Core proof architecture (Measure Subadditivity / non-covering principle):**
+
+1. Forbidden arc of runner *i*: `Forbiddenᵢ = {t ∈ [0,1) : torus_dist(vᵢ·t) < δ}` with `δ = 1/(2(k+1))`;
+2. Key lemma `forbidden_measure_le`: `volume(Forbiddenᵢ) ≤ 2δ = 1/(k+1)` — proven by a one-directional containment into the `vᵢ` raw intervals (m = 0 … vᵢ) intersected with `[0,1)`, with exact endpoint-truncation accounting (δ/v + (v−1)·2δ/v + δ/v = 2δ via `sum_range_succ`/`sum_range_succ'` and `Real.volume_Ico`);
+3. Finite subadditivity `measure_iUnion_fintype_le` ⟹ `volume(⋃ᵢ Forbiddenᵢ) ≤ k/(k+1) < 1 = volume([0,1))` ⟹ the union cannot cover the unit interval ⟹ a lonely time `t*` exists for **every** k simultaneously.
+
+The proof is fully 0-`sorry`, machine-checked by Lean 4.33.0 / mathlib.
+
 ## Abstract
 
 This repository contains machine-checked formal artifacts and computational infrastructure targeting the **14-runner Lonely Runner Conjecture** (LRC, the current global frontier after 13 runners were settled in 2026 via sieving and the polynomial method).
