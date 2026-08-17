@@ -19,6 +19,35 @@ This repository contains machine-checked formal artifacts and computational infr
 
 4. **Five exact lonely-time certificates** (zero floating-point error, `Fraction`-verified) for near-degenerate 14-runner speed tuples (tightest covering gap 7.96e-9), produced by an unattended red-blue adversarial siege (simulated annealing + SOS/Farkas/spectral/entropy probes). Certificate 1 is formalized in Lean with a one-shot `norm_num` proof (`outputs/proved_lonely_runner_k13_14runners.lean`).
 
+## Extremal Boundary Certificates (Certificates 1 to 5 Fully Verified in Lean 4)
+
+All five machine-generated lonely-time certificates are now **fully formalized in Lean 4 with zero `sorry`**:
+
+| Certificate | Lonely time `t*` | Speed tuple (first entries) | Lean proof |
+|---|---|---|---|
+| 1 | 113/357084 | [234, 363, 537, 655, 880, ...] | `outputs/proved_lonely_runner_certificate_1_20260817_012210.lean` |
+| 2 | 1496/2320899 | [111, 372, 1008, 1156, 1162, ...] | `outputs/proved_lrc14_cert2.lean` |
+| 3 | 603/2680832 | [512, 1064, 1196, 1701, 1826, ...] | `outputs/proved_lrc14_cert3.lean` |
+| 4 | 5483/3049760 | [40, 1198, 1294, 1308, 1518, ...] | `outputs/proved_lrc14_cert4.lean` |
+| 5 | 71161/181780592 | [184, 633, 1070, 1820, 1888, ...] | `outputs/proved_lrc14_cert5.lean` |
+
+Each proof consists of 26 rational inequalities `(v·t* − ⌊v·t*⌋) ∈ [1/14, 13/14]` closed by a single `norm_num` — zero floating-point error, machine-checked. The **combined bundle** `outputs/LRC14_FULL_5_CERTIFICATES_BUNDLE.lean` compiles all five theorems in one file (verified as a whole).
+
+## Composite Coprime Span Lower Bound Theorem (0-sorry)
+
+`outputs/proved_coprime_composite_gap_lower_bound.lean` — the pigeonhole lower bound behind the *f(k) = 2k−4* conjecture:
+
+```lean
+theorem coprime_composite_gap_lower_bound (k : ℕ) (hk : 3 ≤ k)
+    (a : Fin k → ℕ) (h_mono : StrictMono a)
+    (ha_ge : ∀ i : Fin k, 4 ≤ a i)
+    (h_comp : ∀ i : Fin k, ¬ Nat.Prime (a i))
+    (h_coprime : ∀ i j : Fin k, i ≠ j → Nat.Coprime (a i) (a j)) :
+    2 * k - 4 ≤ a ⟨k - 1, by omega⟩ - a ⟨0, by omega⟩
+```
+
+Any *k* pairwise-coprime composites (≥ 4, strictly increasing) span at least `2k − 4`. Proof: at most one can be even (evens share the factor 2) ⟹ at least `k−1` are odd; but a window of `2k−4` consecutive integers contains exactly `k−2` odds (inductive lemma `card_odd_Icc`) — a counting contradiction via injectivity forced by coprimality. Fully machine-verified, zero `sorry`.
+
 ## Repository Index
 
 | Path | Content |
