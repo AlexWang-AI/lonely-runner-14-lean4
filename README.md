@@ -66,5 +66,3 @@ python research/lrc14_crt_decoupling.py
 Degeneration analysis, safe-zone collapse logs, and RLVR feedback trajectories are documented in the companion diagnostics repository:  
 👉 [ai-math-institute](https://github.com/AlexWang-AI/ai-math-institute)
 ```
-
----
