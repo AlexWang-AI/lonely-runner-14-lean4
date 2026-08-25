@@ -7,11 +7,11 @@ __pycache__/
 *.pyc
 
 # Lean 构建产物
-MathWorkspace/.lake/
-MathWorkspace/build/
+.lake/
+build/
 
 # 运行期状态与日志 (不属研究成果本体)
 shared_blackboard.json
-research/siege_*.log
+research/*.log
 research/adversarial_audit_log.md
 research/*.json

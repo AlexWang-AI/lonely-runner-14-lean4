@@ -6,5 +6,7 @@
 -- 错题本 (本次探索中封存的禁手规则):
 -- ============================================================
 
+import Mathlib
+
 theorem demo_sqrt2_irrational : Irrational (Real.sqrt 2) := by
   simpa using irrational_sqrt_two

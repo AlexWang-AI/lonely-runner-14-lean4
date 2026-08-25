@@ -6,7 +6,9 @@
 -- 错题本 (本次探索中封存的禁手规则):
 -- ============================================================
 
-theorem erdos_coprime_even_gap (a b c : ℕ) (h1 : a < b) (h2 : b < c) 
+import Mathlib
+
+theorem erdos_coprime_even_gap (a b c : ℕ) (h1 : a < b) (h2 : b < c)
     (hab : Nat.Coprime a b) (hbc : Nat.Coprime b c) (hac : Nat.Coprime a c) 
     (ha : a ≥ 2) (heven : Even a) : c - a ≥ 3 := by
   by_contra hnot

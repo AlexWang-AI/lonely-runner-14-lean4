@@ -6,5 +6,7 @@
 -- 黑石碑 Fingerprint 墙 (终态):
 -- ============================================================
 
+import Mathlib.Tactic
+
 theorem two_plus_two : 2 + 2 = 4 := by
   norm_num
