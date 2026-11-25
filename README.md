@@ -13,11 +13,11 @@ Formal verification pipeline and machine-checked proof certificates for the **14
 ## Key Formal Deliverables
 
 1. **Universal Weak Bound (`0-sorry`)**  
-   Machine-checked proof of the classical measure-theoretic subadditivity bound ($\delta = 1 / (2k)$).  
+   Machine-checked proof of the classical measure-theoretic subadditivity bound ( $\delta = 1/(2k)$ ).  
    * Artifact: `outputs/proved_weak_lonely_runner_universal.lean`
 
-2. **Extremal Boundary Certificates ($M \le 30$)**  
-   Zero-counterexample certificates verified for finite discrete bounds ($>2.3 \times 10^7$ instances verified).  
+2. **Extremal Boundary Certificates** ( $M \le 30$ )  
+   Zero-counterexample certificates verified for finite discrete bounds ( $> 2.3 \times 10^7$ instances verified ).  
    * Artifact: `outputs/LRC14_FULL_5_CERTIFICATES_BUNDLE.lean`
 
 3. **Composite Gap Lower Bound**  
